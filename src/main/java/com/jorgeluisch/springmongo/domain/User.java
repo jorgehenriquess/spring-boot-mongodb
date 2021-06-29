@@ -1,5 +1,6 @@
 package com.jorgeluisch.springmongo.domain;
 
+import com.jorgeluisch.springmongo.dto.UserDTO;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -21,6 +22,10 @@ public class User implements Serializable {
         this.id = id;
         this.name = name;
         this.email = email;
+    }
+
+    public User fromDTO(UserDTO objDTO){
+        return new User(objDTO.getId(), objDTO.getName(), objDTO.getEmail());
     }
 
     public String getId() {
