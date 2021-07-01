@@ -1,5 +1,6 @@
 package com.jorgeluisch.springmongo.resources;
 
+import com.jorgeluisch.springmongo.domain.Post;
 import com.jorgeluisch.springmongo.domain.User;
 import com.jorgeluisch.springmongo.dto.UserDTO;
 import com.jorgeluisch.springmongo.service.UserService;
@@ -58,5 +59,11 @@ public class UserResource {
         User obj = new User().fromDTO(objDTO);
         service.update(obj);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping(value = "/{id}/posts")
+    public ResponseEntity<List<Post>> findPosts(@PathVariable String id) {
+        User obj = service.findById(id);
+        return ResponseEntity.ok().body(obj.getPosts());
     }
 }
