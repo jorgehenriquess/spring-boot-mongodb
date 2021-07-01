@@ -20,26 +20,8 @@ public class PostService {
         Optional<Post> obj = repo.findById(id);
         return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado"));
     }
-    /*
-    public User insert(User obj){
-        return repo.insert(obj);
-    }
 
-    public void delete (String id){
-        findById(id);
-        repo.deleteById(id);
+    public List<Post> findByTitle(String text) {
+        return repo.findByTitleContainingIgnoreCase(text);
     }
-
-    public User update (User obj){
-
-        User newObj = findById(obj.getId());
-        updateData(newObj, obj);
-        return repo.save(newObj);
-    }
-
-    private void updateData(User newObj, User obj) {
-        newObj.setEmail(obj.getEmail());
-        newObj.setName(obj.getName());
-    }
-    */
 }
